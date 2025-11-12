@@ -1,0 +1,304 @@
+/* ------------------ BASE STYLE ------------------ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+/* ------------------ NAVBAR ------------------ */
+.navbar {
+  width: 100%;
+  height: 70px;
+  background-color: #271a1a;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 15px;
+}
+
+.logo {
+  font-size: 28px;
+  font-weight: bold;
+  color: #b98303;
+  font-family: "Cursive", "papyrus", sans-serif;
+  letter-spacing: 3px;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+  padding-top: 10px;
+}
+
+.nav-links li a {
+  text-decoration: none;
+  color: aliceblue;
+  font-size: 18px;
+  position: relative;
+}
+
+/* Underline Hover Effect */
+.nav-links li a::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  background: #f9b208;
+  left: 0;
+  bottom: -4px;
+  transition: 0.3s;
+}
+
+.nav-links li a:hover::after {
+  width: 100%;
+}
+
+/* ------------------ HERO SECTION ------------------ */
+.hero {
+  background-image: url("homepage.png");
+  background-size: cover;
+  background-position: center;
+  height: 940px;
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+#hometext {
+  color: aliceblue;
+  display: flex;
+  justify-content: center;
+  padding-top: 350px;
+  font-size: 75px;
+  font-family: "Cursive", "papyrus", sans-serif;
+  font-weight: bold;
+  text-align: center;
+  z-index: 2;
+}
+
+/* ------------------ RESTAURANTS ------------------ */
+#restaurant {
+  background-color: #7e5938;
+  padding: 40px 15px;
+}
+
+.title {
+  text-align: center;
+  font-weight: bold;
+  font-family: "Cursive", "papyrus", sans-serif;
+  color: aliceblue;
+  margin-bottom: 30px;
+  font-size: 2.2rem;
+}
+
+.restaurant-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+  justify-items: center;
+}
+
+.restaurant-card {
+  background-color: #fff;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  width: 100%;
+  max-width: 320px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.restaurant-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+.restaurant-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.restaurant-info {
+  padding: 15px;
+  text-align: center;
+}
+
+.restaurant-info h2 {
+  margin: 5px 0;
+  font-size: 1.3em;
+  color: #222;
+}
+
+.location {
+  color: #777;
+  font-size: 0.95em;
+  margin-bottom: 10px;
+}
+
+.book-btn {
+  background-color: #4b2a10;
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.3s;
+}
+
+.book-btn:hover {
+  background-color: #6a3e1a;
+}
+
+.offer {
+  background-color: #e4e3e1;
+  color: #473220;
+  font-weight: 500;
+  text-align: center;
+  margin-top: 10px;
+  padding: 8px;
+  border-radius: 8px;
+}
+
+/* ------------------ ABOUT & CONTACT ------------------ */
+.about-section, .contact-section {
+  background-color:  #7e5938;
+  text-align: center;
+  padding: 60px 20px;
+  color: aliceblue;
+}
+
+.about-section h2, .contact-section h2 {
+  font-family: "Cursive", "papyrus", sans-serif;
+  color: #4b2a10;
+  font-size: 2rem;
+  margin-bottom: 20px;
+  font-weight: bolder;
+}
+
+.about-section p, .contact-section p {
+  font-size: 1.1rem;
+  max-width: 800px;
+  margin: 10px auto;
+  line-height: 1.6;
+}
+
+/* ------------------ FOOTER ------------------ */
+.footer {
+  background-color: #271a1a;
+  color: white;
+  text-align: center;
+  padding: 25px 15px;
+  font-size: 1rem;
+}
+
+.footer a {
+  color: #b98303;
+  margin: 0 10px;
+  text-decoration: none;
+  font-size: 1.2rem;
+  transition: color 0.3s;
+}
+
+.footer a:hover {
+  color: #f9b208;
+}
+
+/* ------------------ RESPONSIVE DESIGN ------------------ */
+
+/* Tablet */
+@media (max-width: 992px) {
+  .navbar {
+    flex-direction: column;
+    height: auto;
+    padding: 15px 0;
+  }
+
+  .nav-links {
+    gap: 20px;
+    padding-top: 5px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  #hometext {
+    font-size: 55px;
+    padding-top: 300px;
+  }
+
+  .title {
+    font-size: 1.8rem;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .hero {
+    height: 600px;
+  }
+
+  #hometext {
+    font-size: 40px;
+    padding-top: 250px;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .logo {
+    margin-bottom: 10px;
+  }
+
+  .restaurant-container {
+    grid-template-columns: 1fr;
+  }
+
+  .about-section, .contact-section {
+    padding: 40px 10px;
+  }
+
+  .about-section h2, .contact-section h2 {
+    font-size: 1.6rem;
+  }
+
+  .about-section p, .contact-section p {
+    font-size: 1rem;
+  }
+}
+
+/* Small Phones */
+@media (max-width: 480px) {
+  #hometext {
+    font-size: 30px;
+    padding-top: 200px;
+  }
+
+  .book-btn {
+    width: 100%;
+  }
+
+  .footer {
+    font-size: 0.9rem;
+  }
+}

@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sea Rock Cafe | CafeSpot</title>
+  <style>
+    body {
+      background-color: #fdfaf6;
+      color: #3b2a1a;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    /* Navbar */
+    .navbar {
+      width: 100%;
+      height: 70px;
+      background-color: #271a1a;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 15px;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+      padding-top: 10px;
+    }
+
+    .nav-links li a {
+      text-decoration: none;
+      color: aliceblue;
+      font-size: 18px;
+      position: relative;
+    }
+
+    .nav-links li a::after {
+      content: "";
+      position: absolute;
+      width: 0%;
+      height: 2px;
+      background: #f9b208;
+      left: 0;
+      bottom: -4px;
+      transition: 0.3s;
+    }
+
+    .nav-links li a:hover::after {
+      width: 100%;
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: bold;
+      color: #b98303;
+      font-family: "Cursive","papyrus",sans-serif;
+      letter-spacing: 3px;
+    }
+
+    .section {
+      padding: 40px 20px;
+      text-align: center;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .section h2 {
+      color: #4b2a10;
+      margin-bottom: 20px;
+      font-family: "Cursive","papyrus",sans-serif;
+      font-size: 1.8rem;
+    }
+
+    hr {
+      border: none;
+      height: 2px;
+      background-color: #d1bfa3;
+      margin: 40px auto;
+      width: 80%;
+    }
+
+    .image-gallery, .menu-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      justify-items: center;
+    }
+
+    .image-gallery img, .menu-gallery img {
+      width: 100%;
+      max-width: 300px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .image-gallery img:hover, .menu-gallery img:hover {
+      transform: scale(1.05);
+    }
+
+    .offer-box {
+      background-color: #fff4e0;
+      border-left: 5px solid #b98303;
+      padding: 20px;
+      border-radius: 10px;
+      font-size: 1.1em;
+      color: #4b2a10;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    }
+
+    form {
+      background: #fff;
+      padding: 25px;
+      margin-top: 40px;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    form input {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+
+    form button {
+      width: 100%;
+      padding: 12px;
+      background-color: #4b2a10;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+
+    form button:hover {
+      background-color: #6b3a16;
+    }
+
+    .message {
+      background: #e4e3e1;
+      color: #473220;
+      padding: 12px;
+      margin-top: 15px;
+      border-radius: 10px;
+      font-weight: 600;
+    }
+
+    .back-btn {
+      display: inline-block;
+      margin-top: 25px;
+      background-color: #b98303;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background-color 0.3s;
+    }
+
+    .back-btn:hover {
+      background-color: #8b6702;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo">CafeSpot</div>
+    <ul class="nav-links">
+      <li><a href="#cafeimages">Cafe Images</a></li>
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#offers">Offers</a></li>
+      <li><a href="#book">Book Table</a></li>
+    </ul>
+  </nav>
+
+  <!-- Cafe Images -->
+  <section class="section" id="cafeimages">
+    <h2>Sea Rock Cafe</h2>
+    <div class="image-gallery">
+      <img src="cafe2b.jpeg" alt="Cafe Interior">
+      <img src="cafe2a.avif" alt="Cafe interior">
+    </div>
+  </section>
+
+  <hr>
+
+  <!-- Menu Section -->
+  <section class="section" id="menu">
+    <h2>Our Menu</h2>
+    <div class="menu-gallery">
+      <img src="cafe21.jpeg" alt="Menu Page 1">
+      <img src="cafe22.webp" alt="Menu Page 2">
+    </div>
+  </section>
+
+  <hr>
+
+  <!-- Offers Section -->
+  <section class="section" id="offers">
+    <h2>Current Offers</h2>
+    <div class="offer-box">
+      🎉 Get 20% off on pre-booking! <br>
+      💳 Extra 10% discount with SBI cards. <br>
+      ☕ Happy Hours: 5 PM - 8 PM (Buy 1 Get 1 Free)
+    </div>
+  </section>
+
+  <hr>
+
+<!-- Booking Form -->
+  <section class="section" id="book">
+    <h2>Book Your Table</h2>
+    <form onsubmit="showBookingMessage(event)">
+      <input type="text" id="name" placeholder="Full Name" maxlength="25" pattern="[A-Za-z ]{1,25}" title="Only alphabets (max 25 characters)" required>
+      <input type="tel" id="phone" placeholder="Contact Number" pattern="[0-9]{10}" maxlength="10" required title="Enter 10-digit phone number">
+      <input type="number" id="seats" placeholder="No. of Seats" min="1" max="10" required title="You can book a maximum of 10 seats">
+      <input type="date" id="day" required>
+      <input type="time" id="time" required>
+      <button type="submit">Book Now</button>
+
+      <div id="bookingMessage" class="message" style="display:none;">
+        ✅ Table booked successfully!<br>
+        ☕ Please be at the cafe 5 minutes before your booking time.
+        <br><br>
+        <a href="index.html" class="back-btn">← Go Back to Home</a>
+      </div>
+    </form>
+  </section>
+<script>
+  async function showBookingMessage(event) {
+    event.preventDefault();
+
+    // Collect user inputs
+    const name = document.querySelector('input[placeholder="Full Name"]').value;
+    const phone = document.getElementById("phone").value;
+    const seats = document.getElementById("seats").value;
+    const time = document.querySelector('input[type="time"]').value;
+    const date = new Date().toISOString().split("T")[0]; // today's date (or you can add a <input type="date">)
+    const cafeName = "Sea Rock Cafe"; // Change per cafe page (like "Sloshed Eatery", etc.)
+
+    // Validate phone
+    if (phone.length !== 10 || isNaN(phone)) {
+      alert("Please enter a valid 10-digit phone number.");
+      return;
+    }
+
+    // Validate seats
+    if (seats < 1 || seats > 10) {
+      alert("You can book between 1 to 10 seats only.");
+      return;
+    }
+
+    // Send booking to backend
+    try {
+      const response = await fetch("http://localhost:5000/bookings", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, phone, seats, time, date, cafeName }),
+      });
+
+      if (response.ok) {
+        document.getElementById("bookingMessage").style.display = "block"; // Show success message
+        event.target.reset(); // Clear the form
+      } else {
+        alert("❌ Booking failed! Please try again.");
+      }
+    } catch (error) {
+      alert("⚠️ Server not running! Start backend with: node server.js");
+      console.error(error);
+    }
+  }
+</script>
+</body>
+</html>
+
+ 
