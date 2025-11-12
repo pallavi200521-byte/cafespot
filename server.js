@@ -4,7 +4,9 @@ const cors = require("cors");
 const fs = require("fs");
 
 const app = express();
-const PORT = 5000;
+
+// ✅ Use Render's assigned port OR fallback to 5000 locally
+const PORT = process.env.PORT || 5000;
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -32,6 +34,8 @@ app.post("/bookings", (req, res) => {
   }
 });
 
+// ✅ Listen on the Render-assigned port
 app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}/bookings`);
+  console.log(`✅ Server running on port ${PORT}`);
 });
+
