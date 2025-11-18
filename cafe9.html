@@ -223,65 +223,54 @@
 <!-- Booking Form -->
   <section class="section" id="book">
     <h2>Book Your Table</h2>
+
     <form onsubmit="showBookingMessage(event)">
-      <input type="text" id="name" placeholder="Full Name" maxlength="25" pattern="[A-Za-z ]{1,25}" title="Only alphabets (max 25 characters)" required>
-      <input type="tel" id="phone" placeholder="Contact Number" pattern="[0-9]{10}" maxlength="10" required title="Enter 10-digit phone number">
-      <input type="number" id="seats" placeholder="No. of Seats" min="1" max="10" required title="You can book a maximum of 10 seats">
+      <input type="text" id="name" placeholder="Full Name" required>
+      <input type="tel" id="phone" placeholder="Contact Number" pattern="[0-9]{10}" required>
+      <input type="number" id="seats" placeholder="No. of Seats" min="1" max="10" required>
       <input type="date" id="day" required>
       <input type="time" id="time" required>
+
       <button type="submit">Book Now</button>
 
       <div id="bookingMessage" class="message" style="display:none;">
-        ✅ Table booked successfully!<br>
-        ☕ Please be at the cafe 5 minutes before your booking time.
+        ✅ Table booked successfully!  
+        <br>Please be at the café 5 minutes before your booking time.
         <br><br>
         <a href="index.html" class="back-btn">← Go Back to Home</a>
       </div>
     </form>
   </section>
-<script>
-  async function showBookingMessage(event) {
-    event.preventDefault();
 
-    // Collect user inputs
-    const name = document.querySelector('input[placeholder="Full Name"]').value;
-    const phone = document.getElementById("phone").value;
-    const seats = document.getElementById("seats").value;
-    const time = document.querySelector('input[type="time"]').value;
-    const date = new Date().toISOString().split("T")[0]; // today's date (or you can add a <input type="date">)
-    const cafeName = "Cosmos Resto Bar "; // Change per cafe page (like "Sloshed Eatery", etc.)
+  <script>
+    async function showBookingMessage(event) {
+      event.preventDefault();
 
-    // Validate phone
-    if (phone.length !== 10 || isNaN(phone)) {
-      alert("Please enter a valid 10-digit phone number.");
-      return;
-    }
+      const name = document.getElementById("name").value;
+      const phone = document.getElementById("phone").value;
+      const seats = document.getElementById("seats").value;
+      const date = document.getElementById("day").value;
+      const time = document.getElementById("time").value;
+      const cafeName = "Cosmos Resto Bar Café";
 
-    // Validate seats
-    if (seats < 1 || seats > 10) {
-      alert("You can book between 1 to 10 seats only.");
-      return;
-    }
+      try {
+        const response = await fetch("http://localhost:5000/bookings", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ name, phone, seats, date, time, cafeName })
+        });
 
-    // Send booking to backend
-    try {
-      const response = await fetch("http://localhost:5000/bookings", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, phone, seats, time, date, cafeName }),
-      });
-
-      if (response.ok) {
-        document.getElementById("bookingMessage").style.display = "block"; // Show success message
-        event.target.reset(); // Clear the form
-      } else {
-        alert("❌ Booking failed! Please try again.");
+        if (response.ok) {
+          document.getElementById("bookingMessage").style.display = "block";
+          event.target.reset();
+        } else {
+          alert("❌ Booking failed! Try again.");
+        }
+      } catch (error) {
+        alert("⚠️ Server not running! Start backend with: node server.js");
       }
-    } catch (error) {
-      alert("⚠️ Server not running! Start backend with: node server.js");
-      console.error(error);
     }
-  }
-</script>
+  </script>
+
 </body>
 </html>
