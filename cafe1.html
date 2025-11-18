@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sunny's Café | CafeSpot</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sea-Rock Café | CafeSpot</title>
 
   <style>
     body {
@@ -12,6 +12,7 @@
       font-family: Arial, Helvetica, sans-serif;
     }
 
+    /* Navbar */
     .navbar {
       width: 100%;
       height: 70px;
@@ -56,7 +57,6 @@
       font-size: 28px;
       font-weight: bold;
       color: #b98303;
-      font-family: "Cursive","papyrus", sans-serif;
       letter-spacing: 3px;
     }
 
@@ -65,14 +65,6 @@
       text-align: center;
       max-width: 1000px;
       margin: auto;
-    }
-
-    hr {
-      border: none;
-      height: 2px;
-      background-color: #d1bfa3;
-      margin: 40px auto;
-      width: 80%;
     }
 
     .image-gallery, .menu-gallery {
@@ -88,6 +80,20 @@
       border-radius: 12px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.1);
       transition: transform 0.3s ease;
+    }
+
+    .image-gallery img:hover, .menu-gallery img:hover {
+      transform: scale(1.05);
+    }
+
+    .offer-box {
+      background-color: #fff4e0;
+      border-left: 5px solid #b98303;
+      padding: 20px;
+      border-radius: 10px;
+      font-size: 1.1em;
+      color: #4b2a10;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
     }
 
     form {
@@ -121,6 +127,10 @@
       transition: background 0.3s;
     }
 
+    form button:hover {
+      background-color: #6b3a16;
+    }
+
     .message {
       background: #e4e3e1;
       color: #473220;
@@ -128,25 +138,41 @@
       margin-top: 15px;
       border-radius: 10px;
       font-weight: 600;
-      display: none;
+    }
+
+    .back-btn {
+      display: inline-block;
+      margin-top: 25px;
+      background-color: #b98303;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background-color 0.3s;
+    }
+
+    .back-btn:hover {
+      background-color: #8b6702;
     }
   </style>
 </head>
-
 <body>
 
+  <!-- Navbar -->
   <nav class="navbar">
     <div class="logo">CafeSpot</div>
     <ul class="nav-links">
       <li><a href="#cafeimages">Cafe Images</a></li>
       <li><a href="#menu">Menu</a></li>
+      <li><a href="#offers">Offers</a></li>
       <li><a href="#book">Book Table</a></li>
     </ul>
   </nav>
 
-  
+  <!-- Cafe Images -->
   <section class="section" id="cafeimages">
-    <h2>Sunny's Café - Gallery</h2>
+    <h2>Sunny’s Café - Gallery</h2>
     <div class="image-gallery">
       <img src="cafe1cc.avif" alt="Cafe Interior">
       <img src="cafe1dd.avif" alt="Cafe Ambience">
@@ -155,75 +181,79 @@
 
   <hr>
 
+  <!-- Menu Section -->
   <section class="section" id="menu">
     <h2>Our Menu</h2>
     <div class="menu-gallery">
-      <img src="cafe11.webp">
-      <img src="cafe12.webp">
-      <img src="cafe13.webp">
+      <img src="cafe11.webp" alt="Menu Page 1">
+      <img src="cafe12.webp" alt="Menu Page 2">
+      <img src="cafe13.webp" alt="Menu Page 3">
     </div>
   </section>
 
   <hr>
 
+  <!-- Offers -->
+  <section class="section" id="offers">
+    <div class="offer-box">
+      🌟 Flat 30% OFF on pre-booking this weekend! 🌟 <br>
+      Happy Hours: 4 PM – 7 PM
+    </div>
+  </section>
+
+  <hr>
+
+ <!-- Booking Form -->
   <section class="section" id="book">
     <h2>Book Your Table</h2>
 
-    <form onsubmit="submitBooking(event)">
+    <form onsubmit="showBookingMessage(event)">
       <input type="text" id="name" placeholder="Full Name" required>
-      <input type="tel" id="phone" placeholder="Contact Number" pattern="[0-9]{10}" maxlength="10" required>
+      <input type="tel" id="phone" placeholder="Contact Number" pattern="[0-9]{10}" required>
       <input type="number" id="seats" placeholder="No. of Seats" min="1" max="10" required>
-      <input type="date" id="date" required>
+      <input type="date" id="day" required>
       <input type="time" id="time" required>
+
       <button type="submit">Book Now</button>
 
-      <div id="bookingMessage" class="message"></div>
+      <div id="bookingMessage" class="message" style="display:none;">
+        ✅ Table booked successfully!  
+        <br>Please be at the café 5 minutes before your booking time.
+        <br><br>
+        <a href="index.html" class="back-btn">← Go Back to Home</a>
+      </div>
     </form>
   </section>
-<script>
-  async function showBookingMessage(event) {
-    event.preventDefault();
 
-    // Collect user inputs
-    const name = document.querySelector('input[placeholder="Full Name"]').value;
-    const phone = document.getElementById("phone").value;
-    const seats = document.getElementById("seats").value;
-    const time = document.querySelector('input[type="time"]').value;
-    const date = new Date().toISOString().split("T")[0]; // today's date (or you can add a <input type="date">)
-    const cafeName = "Sea Rock Cafe"; // Change per cafe page (like "Sloshed Eatery", etc.)
+  <script>
+    async function showBookingMessage(event) {
+      event.preventDefault();
 
-    // Validate phone
-    if (phone.length !== 10 || isNaN(phone)) {
-      alert("Please enter a valid 10-digit phone number.");
-      return;
-    }
+      const name = document.getElementById("name").value;
+      const phone = document.getElementById("phone").value;
+      const seats = document.getElementById("seats").value;
+      const date = document.getElementById("day").value;
+      const time = document.getElementById("time").value;
+      const cafeName = "Sunny's Café";
 
-    // Validate seats
-    if (seats < 1 || seats > 10) {
-      alert("You can book between 1 to 10 seats only.");
-      return;
-    }
+      try {
+        const response = await fetch("http://localhost:5000/bookings", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ name, phone, seats, date, time, cafeName })
+        });
 
-    // Send booking to backend
-    try {
-      const response = await fetch("http://localhost:5000/bookings", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, phone, seats, time, date, cafeName }),
-      });
-
-      if (response.ok) {
-        document.getElementById("bookingMessage").style.display = "block"; // Show success message
-        event.target.reset(); // Clear the form
-      } else {
-        alert("❌ Booking failed! Please try again.");
+        if (response.ok) {
+          document.getElementById("bookingMessage").style.display = "block";
+          event.target.reset();
+        } else {
+          alert("❌ Booking failed! Try again.");
+        }
+      } catch (error) {
+        alert("⚠️ Server not running! Start backend with: node server.js");
       }
-    } catch (error) {
-      alert("⚠️ Server not running! Start backend with: node server.js");
-      console.error(error);
     }
-  }
-</script>
+  </script>
+
 </body>
 </html>
-
